@@ -1,9 +1,9 @@
 import "./App.css";
+import { useCallback, useState } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
-import { useCallback, useState } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
@@ -84,7 +84,6 @@ const App = () => {
 
   const displayFaceBox = (box) => {
     setBoxed(box);
-    console.log(box);
   };
 
   const onInputChange = (event) => {
