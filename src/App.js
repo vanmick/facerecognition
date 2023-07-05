@@ -67,11 +67,13 @@ const App = () => {
   const [route, setRoute] = useState("signin");
   const [isSignedIn, setisSignedIn] = useState(false);
   const [userData, setUserData] = useState({
-    id: "",
-    name: "",
-    email: "",
-    entries: 0,
-    joined: "",
+    user: {
+      id: "",
+      name: "",
+      email: "",
+      entries: 0,
+      joined: "",
+    },
   });
 
   const loadUser = (data) => {
@@ -127,6 +129,7 @@ const App = () => {
     )
       .then((response) => response.json())
       .then((result) => displayFaceBox(calculateFaceLocation(result)))
+      .then(console.log(userData.user.name))
       .catch((error) => console.log("error", error));
   };
 
@@ -204,7 +207,7 @@ const App = () => {
       {route === "home" ? (
         <div>
           <Logo />
-          <Rank loadUser={loadUser} />
+          <Rank name={userData.user.name} entries={userData.user.entries} />
           <ImageLinkForm onInputChange={onInputChange} onSubmit={onSubmit} />
           <FaceRecognition ImageUrl={ImageUrl} box={boxed} />
         </div>
